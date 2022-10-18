@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="stage" style="width: 100%; height: 100%;"></div>
+    <style>
+        html, body, #stage {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+    </style>
+    <script src = "https://cdn.anychart.com/js/latest/graphics.min.js"></script>
+    <script> 
+        const stage = acgraph.create('stage');
+        let WID = screen.width;
+        let HEI = screen.height;
+        function start() {
+            function drawStartScreen() {
+                let BG = stage.rect(0, 0, WID, HEI).fill("gray");
+                let upperCeil = stage.rect(0, 0, WID, HEI / 9).fill("black");
+                let bottomFloor = stage.rect(0, HEI - HEI / 9, WID, HEI).fill("black");
+                for (let x = 0; x < WID; x += WID / 4) {
+                    let corn = stage.path()
+                        .moveTo(0 + x, HEI / 9)
+                        .lineTo(WID / 32 + x, 2 * HEI / 9)
+                        .lineTo(WID / 16 + x, HEI / 9)
+                        .lineTo(3 * WID / 32 + x, HEI / 3)
+                        .lineTo(WID / 8 + x, HEI / 9)
+                        .lineTo(5 * WID / 32 + x, 2 * HEI / 9)
+                        .lineTo(3 * WID / 16 + x, HEI / 9)
+                        .close().fill("black");
+                }
+            }
+
+            function ritton() {
+                let mainChara = [[0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0],
+                [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0],
+                [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+                [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+                [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0],
+                [1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0],
+                [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0],
+                [1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+                [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+                [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0],
+                [1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0],
+                [0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+                [0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                [0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]];
+
+                const rows = 21;
+                const columns = 16;
+                const gutter = 1;
+                const w = 4.5;
+                const h = 4.5;
+                const offsetX = 10;
+                const offsetY = HEI / 9 * 8 - 21 * h;
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < columns; c++) {
+                        if (mainChara[r][c] === 1) {
+                            let px = c * w;
+                            let py = r * h;
+                            let main = stage.rect(offsetX + px, offsetY + py, w, h).stroke(0, 0).fill("#000000");
+                        }
+                    }
+                }
+            }
+
+            function drawStart() {
+                title = [[0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0],
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0]];
+
+                const rows2 = 7;
+                const columns2 = 35;
+                const w2 = 10;
+                const h2 = 10;
+                const offsetX2 = WID / 2 - columns2 * w2 / 2;
+                const offsetY2 = HEI / 2;
+
+                for (let r2 = 0; r2 < rows2; r2++) {
+                    for (let c2 = 0; c2 < columns2; c2++) {
+                        if (title[r2][c2] === 1) {
+                            let px2 = c2 * w2;
+                            let py2 = r2 * h2;
+                            let main2 = stage.rect(offsetX2 + px2, offsetY2 + py2, w2, h2).stroke(0, 0).fill("#FFFFFF");
+                        }
+                    }
+                }
+                let strokeDistance = 10;
+                let startStr = stage.path()
+                    .moveTo(offsetX2 - strokeDistance, offsetY2 - strokeDistance)
+                    .lineTo(offsetX2 + columns2 * w2 + strokeDistance, offsetY2 - strokeDistance)
+                    .lineTo(offsetX2 + columns2 * w2 + strokeDistance, offsetY2 + rows2 * h2 + strokeDistance)
+                    .lineTo(offsetX2 - strokeDistance, offsetY2 + rows2 * h2 + strokeDistance)
+                    .close();
+            }
+            drawStartScreen();
+            ritton();
+            drawStart();
+        }
+        
+        start();
+
+       /* function draw1() {
+            startGame = document.getElementById("startGame");
+            let reload = stage.clear(0, 0, WID, HEI);
+        }*/
+        
+
+
+
+
+            
+
+    </script>
+    <style type="text/css">
+        body{
+        margin: 0;
+        padding: 0;
+        }
+    </style>
+</body>
+</html>
