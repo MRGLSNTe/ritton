@@ -124,7 +124,7 @@
                     time = 10;
                     const intervalID = setInterval(expand,100);
                     function expand(){
-                        let window = stage.circle(WID / 2,HEI / 2,HEI / time / 2).fill("gray");
+                        let window = stage.circle(WID / 2,HEI / 2,WID / time / 2).fill("gray");
                         time--;
 
                         if (time < 2){
