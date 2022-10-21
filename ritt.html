@@ -114,10 +114,29 @@
         
         start();
 
-       /* function draw1() {
-            startGame = document.getElementById("startGame");
-            let reload = stage.clear(0, 0, WID, HEI);
-        }*/
+        document.addEventListener("keypress",step1);
+        function step1(e){
+            document.getElemetById = e.key;
+            if (e = 13){
+                let reload = stage.rect(0,0,WID,HEI).fill("black");
+                setTimeout(load,1500);
+                function load(){
+                    time = 10;
+                    const intervalID = setInterval(expand,100);
+                    function expand(){
+                        let window = stage.circle(WID / 2,HEI / 2,HEI / time / 2).fill("gray");
+                        time--;
+
+                        if (time < 2){
+                            clearInterval(intervalID);
+                            let start_stage1 = stage.rect(0,0,WID,HEI).fill("gray");
+                        }
+                    }
+                }
+                load();
+            }
+        }
+
         
 
 
