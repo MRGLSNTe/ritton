@@ -19,13 +19,15 @@
    
     
     class ritton{
-        rows = 21;
-        columns = 16;
-        gutter = 1;
-        w = 4.5;
-        h = 4.5;
-        offsetX = 10;
-        offsetY = HEI / 9 * 8 - 21 * h;
+        constructor(rows,columns,gutter,w,h,offsetX,offsetY){
+        this.rows = 21;
+        this.columns = 16;
+        this.gutter = 1;
+        this.w = 4.5;
+        this.h = 4.5;
+        this.offsetX = 10;
+        this.offsetY = HEI / 9 * 8 - 21 * h;
+        }
         
         figure() {
         let mainChara = [[0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
