@@ -16,20 +16,14 @@
     const stage = acgraph.create('stage');
     let WID = screen.width;
     let HEI = screen.height;
-   
-    
-    const ritton = class{
-        constructor(rows,columns,gutter,w,h,offsetX,offsetY){
-        this.rows = 21;
-        this.columns = 16;
-        this.gutter = 1;
-        this.w = 4.5;
-        this.h = 4.5;
-        this.offsetX = 10;
-        this.offsetY = HEI / 9 * 8 - 21 * h;
-        }
-        
-        figure() {
+    let rows = 21;
+    let columns = 16;
+    let gutter = 1;
+    let w = 4.5;
+    let h = 4.5;
+    let offsetX = 10;
+    let offsetY = HEI / 9 * 8 - 21 * h;
+    function rittonFigure() {
         let mainChara = [[0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0],
             [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0],
@@ -52,17 +46,15 @@
             [0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]];
 
-            for (let r = 0; r < this.rows; r++) {
-                for (let c = 0; c < this.columns; c++) {
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < columns; c++) {
                     if (mainChara[r][c] === 1) {
-                        let px = c * this.w;
-                        let py = r * this.h;
-                        return stage.rect(this.offsetX + px, this.offsetY + py, w, h).stroke(0, 0).fill("#000000");
+                        let px = c * w;
+                        let py = r * h;
+                        return stage.rect(offsetX + px, offsetY + py, w, h).stroke(0, 0).fill("#000000");
                     }
                 }
             }
-        }
-
     }
 
     function drawStartScreen() {
@@ -116,7 +108,7 @@
             .close();
     }
     drawStartScreen();
-    ritton.figure();
+    rittonFigure();
     drawStart();
     
 
@@ -150,11 +142,11 @@
     function moveRight(e2){
     document.getElemetById = e2.key;
     if (e2 = 38){
-        ritton.offsetX += WID / 50;
-        ritton.figure();
+        offsetX += WID / 50;
+        rittonFigure();
     }else if (e2 = 65){
-        ritton.offsetX -= WID /50;
-        ritton.figure();
+        offsetX -= WID /50;
+        rittonFigure();
         }
     }
 
