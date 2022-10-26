@@ -112,11 +112,10 @@
     drawStart();
     
 
-
+    time1 = 10;
     document.addEventListener("keypress",step1);
     function step1(e){
         document.getElemetById = e.key;
-        time = 10;
         if (e = 13 && time == 10){
             let reload = stage.rect(0,0,WID,HEI).fill("black");
             setTimeout(load,1500);
@@ -134,7 +133,6 @@
                     }
                 }
             }
-            load();
         }
     }
 
